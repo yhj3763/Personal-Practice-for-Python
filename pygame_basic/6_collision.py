@@ -92,7 +92,7 @@ while running:
     enemy_rect.top = enemy_y_pos
 
    #collision check
-    if character_rect.collidedict(enemy_rect):
+    if character_rect.colliderect(enemy_rect):
         print("Crushed")
         running = False
    

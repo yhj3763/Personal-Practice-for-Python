@@ -43,6 +43,16 @@ enemy_height = enemy_size[1]  # height of enemy
 enemy_x_pos = (screen_width / 2) -(enemy_width /2)  # placed in half of width of screen
 enemy_y_pos = (screen_height / 2)  - (enemy_height / 2)#  placed at the bottom of screen
 
+# font definition 
+game_font = pygame.font.Font(None, 40)
+
+# whole time
+total_time =10
+
+# start time
+start_ticks = pygame.time.get_ticks()
+
+
 
 #Event loop
 running = True
@@ -92,18 +102,35 @@ while running:
     enemy_rect.top = enemy_y_pos
 
    #collision check
-    if character_rect.collidedict(enemy_rect):
+    if character_rect.colliderect(enemy_rect):
         print("Crushed")
         running = False
    
    # screen.fill((0, 0, 255))
     screen.blit(background, (0,0)) #drawing background
-
     screen.blit(character, (character_x_pos,character_y_pos))
-
     screen.blit(enemy, (enemy_x_pos, enemy_y_pos))
 
+
+    elasped_time = (pygame.time.get_ticks() - start_ticks) /1000
+
+    timer = game_font.render(str(int(total_time - elasped_time)), True, (255, 255, 255))
+    #Printed letter, True, font color
+
+    screen.blit(timer, (10, 10))
+
+    #if time is under 0 game is over
+    if total_time - elasped_time <= 0:
+        print("Time Over")
+        running = False
+
+
     pygame.display.update() #drawing screen again.
+
+
+pygame.time.delay(2000)
+
+    
 
 
 # pygame end
