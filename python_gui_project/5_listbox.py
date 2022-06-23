@@ -4,7 +4,7 @@ root = Tk()
 root.title("GUI")
 root.geometry("640x480") # width and height
 
-listbox = Listbox(root, selectmode="extended", height = 0)
+listbox = Listbox(root, height = 0)
 listbox.insert(0, "Apple")
 listbox.insert(1, "StrawBerry")
 listbox.insert(2, "Banana")
